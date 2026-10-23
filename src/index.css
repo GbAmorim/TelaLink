@@ -1,0 +1,26 @@
+:root {
+  font-family: "gg sans", "Noto Sans", "Segoe UI", system-ui, -apple-system, sans-serif;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  color-scheme: dark;
+  color: var(--text-normal, #dbdee1);
+  background: var(--bg-tertiary, #1e1f22);
+}
+
+html,
+body,
+#root {
+  height: 100%;
+  margin: 0;
+  min-width: 320px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+button,
+input {
+  font: inherit;
+}

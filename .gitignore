@@ -1,0 +1,11 @@
+node_modules/
+server/node_modules/
+dist/
+dist-electron/
+release/
+.env
+.env.*
+!.env.example
+server/.env
+server/.env.*
+!server/.env.example

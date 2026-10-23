@@ -1,0 +1,20 @@
+{
+  "$schema": "https://raw.githubusercontent.com/electron-userland/electron-builder/master/packages/app-builder-lib/scheme.json",
+  "appId": "com.telalink.desktop",
+  "productName": "TelaLink",
+  "asar": true,
+  "directories": { "output": "release" },
+  "files": ["dist/**/*", "dist-electron/**/*", "package.json"],
+  "win": {
+    "target": [{ "target": "nsis", "arch": ["x64"] }],
+    "artifactName": "${productName}-Windows-${version}-Setup.${ext}"
+  },
+  "nsis": {
+    "oneClick": false,
+    "perMachine": false,
+    "allowToChangeInstallationDirectory": true,
+    "createDesktopShortcut": true,
+    "createStartMenuShortcut": true,
+    "deleteAppDataOnUninstall": false
+  }
+}

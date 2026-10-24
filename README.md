@@ -21,13 +21,25 @@ Aplicativo desktop Windows feito com Electron + React + Vite. A interface foi si
 
 `ws://localhost:3001` funciona apenas para teste na mesma máquina. Para computadores diferentes, é obrigatório publicar `server/` em um serviço acessível pela internet e usar uma URL WebSocket segura (`wss://`).
 
-## Configurações do app
+## Novidades da versão 5
 
-A engrenagem (canto inferior esquerdo) abre as **Configurações**: tema Escuro, Claro ou Automático (segue o Windows) e qualidade da transmissão (Economia 720p/15 fps, Equilibrada 1080p/30 fps, Alta 1080p/60 fps). A qualidade também pode ser escolhida na tela "Ir ao vivo". O endereço do servidor fica em **Avançado**.
+- **Som do computador sem o Discord:** ao transmitir, o som do computador vai junto, mas o Discord (se estiver aberto) fica de fora, então quem assiste não ouve a voz da chamada. O Windows permite deixar de fora um aplicativo por vez; se o Discord não estiver aberto, fica de fora o próprio TelaLink (evita ouvir de volta as transmissões que você assiste). Também dá para escolher "Sem som".
+- **Acesso com duas opções:** **Com solicitação** (padrão: quem digita o código pede para entrar e você confirma) ou **Aberta** (entra direto com o código).
+- **Nomes e remover pessoas:** o nome de cada pessoa aparece nas caixas e na sua lista, e o botão **x** ao lado do nome (na barra da sua transmissão) remove a pessoa.
+- **Aviso de servidor desatualizado:** se o servidor do Render ainda for o antigo, o app avisa (nomes, solicitação e remoção só funcionam com o servidor novo). Em Configurações → Avançado, **Testar** também mostra isso.
+- Transmitir uma ou várias telas, assistir a até 5 transmissões em caixas responsivas, trocar de tela/janela ao vivo, tema claro/escuro e qualidade da transmissão continuam como antes.
 
-## Endereço do servidor dentro do app
+### Passo obrigatório: instalar o módulo de som (uma vez, no computador onde você gera o instalador)
 
-Além do `.env.production`, o TelaLink tem **Configurações do servidor** (engrenagem no canto inferior esquerdo). Ali dá para colar o endereço do Render (aceita `https://...`, converte para `wss://`), clicar em **Testar** e **Salvar**. O endereço fica guardado naquele computador. Use isso para testar sem gerar um novo instalador; para distribuir, continue definindo `VITE_SIGNALING_URL` no `.env.production`.
+```powershell
+npm install loopback-capture
+```
+
+Ele entra no instalador, e as outras pessoas não precisam instalar nada. Sem o módulo, o app funciona, mas só com "Sem som". Requer Windows 10 versão 2004 ou superior.
+
+### Atualizar o servidor (obrigatório)
+
+Envie a pasta `server` atualizada ao GitHub (o Render faz o deploy sozinho) e confira o `/health`. Depois gere o instalador novo: versões antigas não conversam direito com o servidor novo.
 
 ## Configurar o serviço para computadores diferentes
 

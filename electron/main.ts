@@ -1,6 +1,7 @@
 import { app, BrowserWindow, ipcMain, desktopCapturer } from "electron";
 import { fileURLToPath } from "node:url";
 import path from "node:path";
+import * as audio from "./audio";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
@@ -47,6 +48,12 @@ ipcMain.handle("telalink:set-theme", (_event, theme: "dark" | "light") => {
         // plataforma sem barra de título personalizada
     }
 });
+
+// Som do computador sem o Discord: o Windows permite capturar todo o áudio deixando um aplicativo de fora.
+ipcMain.handle("telalink:audio-plan", () => audio.plan());
+ipcMain.handle("telalink:audio-start", (event) => audio.startSystemAudio(event.sender));
+ipcMain.handle("telalink:audio-stop", () => audio.stopSystemAudio());
+app.on("before-quit", () => audio.stopSystemAudio());
 
 function createWindow() {
     win = new BrowserWindow({

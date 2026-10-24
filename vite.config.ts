@@ -11,6 +11,8 @@ export default defineConfig({
       main: {
         // Shortcut of `build.lib.entry`.
         entry: 'electron/main.ts',
+        // O módulo nativo do som do computador precisa ficar fora do pacote gerado pelo Vite.
+        vite: { build: { rollupOptions: { external: ['loopback-capture'] } } },
       },
       preload: {
         // Shortcut of `build.rollupOptions.input`.

@@ -165,11 +165,14 @@ input:focus-visible {
 .sidebar-scroll {
   flex: 1;
   min-height: 0;
+  min-width: 0;
   overflow-y: auto;
+  overflow-x: hidden;
   padding: 8px;
 }
 .side-label {
   padding: 16px 8px 6px;
+  overflow-wrap: anywhere;
   color: var(--text-muted);
   font-size: 12px;
   font-weight: 700;

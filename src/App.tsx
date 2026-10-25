@@ -680,7 +680,7 @@ export default function App() {
                   <div className="member" key={member.id}>
                     <Avatar name={member.name} />
                     <span className="member-name">{member.name}</span>
-                    <button className="icon-btn member-action tip tip-right" data-tip="Remover" aria-label={`Remover ${member.name}`} onClick={() => hostRoomRef.current?.kick(member.id)}><Icon d={PATHS.close} /></button>
+                    <button className="icon-btn member-action" aria-label={`Remover ${member.name}`} onClick={() => hostRoomRef.current?.kick(member.id)}><Icon d={PATHS.close} /></button>
                   </div>
                 ))}
               </>
@@ -693,7 +693,7 @@ export default function App() {
                   <div className="member clickable" key={item.key} onClick={() => { setView("group"); setFocusKey(item.key); }}>
                     <Avatar name={item.hostName} live={item.state === "live"} />
                     <span className="member-name">{item.hostName}</span>
-                    <button className="icon-btn member-action danger tip tip-right" data-tip="Sair" aria-label={`Sair da transmissão de ${item.hostName}`} onClick={(event) => { event.stopPropagation(); leaveViewer(item.key); }}><Icon d={PATHS.hangup} /></button>
+                    <button className="icon-btn member-action danger" aria-label={`Sair da transmissão de ${item.hostName}`} onClick={(event) => { event.stopPropagation(); leaveViewer(item.key); }}><Icon d={PATHS.hangup} /></button>
                   </div>
                 ))}
               </>
@@ -706,7 +706,7 @@ export default function App() {
                 <div className="voice-title"><Icon d={PATHS.signal} />Transmitindo</div>
                 <div className="voice-sub">{host.code}</div>
               </div>
-              <button className="icon-btn danger tip tip-right" data-tip="Encerrar transmissão" aria-label="Encerrar transmissão" onClick={endHosting}><Icon d={PATHS.hangup} /></button>
+              <button className="icon-btn danger" aria-label="Encerrar transmissão" onClick={endHosting}><Icon d={PATHS.hangup} /></button>
             </div>
           )}
 
